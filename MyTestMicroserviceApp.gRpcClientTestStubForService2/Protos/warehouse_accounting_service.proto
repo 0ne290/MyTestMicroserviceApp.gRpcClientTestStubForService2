@@ -1,0 +1,33 @@
+syntax = "proto3";
+ 
+option csharp_namespace = "MyTestMicroserviceApp.gRpcClientTestStubForService2";
+ 
+package warehouse_accounting_service;
+ 
+service Service2 {
+  rpc GetNearestWarehouseGuidByPoint(Point) returns (WarehouseGuid);
+  
+  rpc GetAllProductsInWarehouse(WarehouseGuid) returns (Products);
+}
+ 
+message Point {
+  double latitude = 1;
+  
+  double longitude = 2;
+}
+ 
+message WarehouseGuid {
+  string value = 1;
+}
+
+message Product {
+  string guid = 1;
+
+  string name = 2;
+  
+  int32 quantity = 3;
+}
+ 
+message Products {
+  repeated Product values = 1;
+}
